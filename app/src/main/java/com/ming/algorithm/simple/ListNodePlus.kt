@@ -120,6 +120,23 @@ class ListNodePlus {
      */
     class ListNode(var value: Int) {
         var next: ListNode? = null
+
+        companion object{
+            /**
+             * 初始化数据
+             */
+            fun initListNode(data:List<Int>):ListNode{
+                var result=ListNode(data[0])
+                var temp:ListNode=result
+                for (index in 1 until data.size){
+                    val next=ListNode(data[index])
+                    temp.next= next
+                    temp=next
+                }
+                return result
+            }
+        }
+
         override fun toString(): String {
             return getValue(StringBuilder("["),this)
         }
