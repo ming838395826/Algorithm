@@ -51,8 +51,8 @@ class ListNodePlus {
                 return firstdata!!
             }
 
-            var itemOne=if (l1 ===null) 0  else l1.value
-            var itemTwo=if (l2 ===null) 0  else l2.value
+            var itemOne=if (l1 ===null) 0  else l1.`val`
+            var itemTwo=if (l2 ===null) 0  else l2.`val`
             val total=itemOne+itemTwo+if (needAdd) 1 else 0
             val result=ListNode(total%10)
             var firstdata=firstdata
@@ -82,7 +82,7 @@ class ListNodePlus {
          * 通过while进行
          */
         fun solveTwo(l1: ListNode, l2: ListNode): ListNode{
-            var data=(l1.value+l2.value)
+            var data=(l1.`val`+l2.`val`)
             var carry=data/10
             val result=ListNode(data%10)
             var ln1=l1.next
@@ -91,13 +91,13 @@ class ListNodePlus {
             while (ln1!==null||ln2!==null){
                 val next=ListNode(0)
                 if (ln1===null){
-                    data=ln2!!.value+carry
+                    data=ln2!!.`val`+carry
                 }else if(ln2===null){
-                    data=ln1!!.value+carry
+                    data=ln1!!.`val`+carry
                 }else{
-                    data=ln1.value+ln2.value+carry
+                    data=ln1.`val`+ln2.`val`+carry
                 }
-                next.value=data%10
+                next.`val`=data%10
                 carry=data/10
                 node.next=next
 
@@ -118,7 +118,7 @@ class ListNodePlus {
     /**
      * 链表类
      */
-    class ListNode(var value: Int) {
+    class ListNode(var `val`: Int) {
         var next: ListNode? = null
 
         companion object{
@@ -142,7 +142,7 @@ class ListNodePlus {
         }
 
         fun getValue(builder: StringBuilder,data:ListNode):String{
-            builder.append(data.value)
+            builder.append(data.`val`)
             return if(data.next!==null){
                 getValue(builder,data.next!!)
             }else{
