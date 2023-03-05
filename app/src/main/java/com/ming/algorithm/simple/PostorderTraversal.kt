@@ -6,21 +6,21 @@ import com.ming.algorithm.bean.TreeNode
 import java.util.*
 
 /**
- * @Description  二叉树的前序遍历
+ * @Description   二叉树的后序遍历
  * @Author ming
  * @Date 2022/2/10 23:20
  */
-class PreorderTraversal {
+class PostorderTraversal {
 
     companion object {
         /**
-        给你二叉树的根节点 root ，返回它节点值的 前序 遍历。
+        给你一棵二叉树的根节点 root ，返回其节点值的 后序遍历 。
          */
         @JvmStatic
         fun main(args: Array<String>) {
             /**
             输入：root = [1,null,2,3]
-            输出：[1,2,3]
+            输出：[3,2,1]
              */
             print("结果是${solveOne(TreeNode(1))}\n")
         }
@@ -29,14 +29,14 @@ class PreorderTraversal {
          * 递归
          */
         fun solveOne(root: TreeNode?): List<Int> {
-            // 中左右
+            // 左右中
             fun traversal(treeNode: TreeNode?, list: MutableList<Int>) {
                 if (treeNode == null) {
                     return
                 }
-                list.add(treeNode.`val`)
                 traversal(treeNode.left, list)
                 traversal(treeNode.right, list)
+                list.add(treeNode.`val`)
             }
 
             val result = mutableListOf<Int>()
