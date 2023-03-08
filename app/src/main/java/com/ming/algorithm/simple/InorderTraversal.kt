@@ -43,5 +43,31 @@ class InorderTraversal {
             traversal(root, result)
             return result
         }
+
+        /**
+         * 迭代法
+         */
+        fun solveTwo(root: TreeNode?): List<Int> {
+            if (root == null) {
+                return emptyList()
+            }
+            val stack = Stack<TreeNode>()
+            val result = mutableListOf<Int>()
+            var currentNode = root
+            // 如果是空
+            while (currentNode != null || !stack.isEmpty()) {
+                // 如果不为空 就一直查找左边（右边也会放进堆栈）
+                if (currentNode != null) {
+                    stack.push(currentNode)
+                    currentNode = currentNode.left
+                } else {
+                    // 拿中
+                    val middleNode = stack.pop()
+                    result.add(middleNode.`val`)
+                    currentNode = middleNode.right
+                }
+            }
+            return result
+        }
     }
 }

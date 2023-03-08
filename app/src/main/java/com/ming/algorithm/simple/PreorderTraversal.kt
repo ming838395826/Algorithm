@@ -43,5 +43,30 @@ class PreorderTraversal {
             traversal(root, result)
             return result
         }
+
+        /**
+         * 迭代法
+         */
+        fun solveTwo(root: TreeNode?): List<Int> {
+            if (root == null) {
+                return emptyList()
+            }
+            val stack = Stack<TreeNode>()
+            val result = mutableListOf<Int>()
+            stack.push(root)
+            // 如果是空
+            while (!stack.isEmpty()) {
+                val item = stack.pop()
+                result.add(item.`val`)
+                // 先右后走
+                if (item.right != null) {
+                    stack.push(item.right)
+                }
+                if (item.left != null) {
+                    stack.push(item.left)
+                }
+            }
+            return result
+        }
     }
 }
