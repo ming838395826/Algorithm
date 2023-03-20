@@ -48,5 +48,21 @@ class MaxDepth {
             }
             return result
         }
+
+        /**
+         * 递归法
+         */
+        fun solveTwo(root: TreeNode?): Int {
+            fun getMaxDepth(root: TreeNode?, deep: Int): Int {
+                if (root == null) {
+                    return deep
+                }
+                return Math.max(
+                    getMaxDepth(root?.left, deep + 1),
+                    getMaxDepth(root?.right, deep + 1)
+                )
+            }
+            return getMaxDepth(root, 0)
+        }
     }
 }
