@@ -37,8 +37,8 @@ class IsSymmetric {
             if ((root?.left == null && root?.right != null) || (root?.left != null && root?.right == null)) {
                 return false
             }
-            quene.offer(root.left)
-            quene.offer(root.right)
+            quene.offer(root?.left)
+            quene.offer(root?.right)
             while (!quene.isEmpty()) {
                 var size = quene.size
                 while (size > 0) {

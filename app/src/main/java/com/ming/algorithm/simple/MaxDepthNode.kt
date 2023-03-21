@@ -29,11 +29,6 @@ class MaxDepthNode {
             val three = Node(4)
             val oneone = Node(5)
             val onetwo = Node(5)
-            one.children.add(oneone)
-            one.children.add(onetwo)
-            root.children.add(one)
-            root.children.add(two)
-            root.children.add(three)
             print("结果是${solveTwo(root)}\n")
         }
 

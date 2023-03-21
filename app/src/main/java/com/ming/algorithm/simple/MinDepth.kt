@@ -2,6 +2,7 @@ package com.ming.algorithm.simple
 
 import com.ming.algorithm.bean.TreeNode
 import java.util.*
+import kotlin.math.max
 
 /**
  * @Description    二叉树的最小深度
@@ -22,7 +23,7 @@ class MinDepth {
             输入：root = [3,9,20,null,null,15,7]
             输出：2
              */
-            print("结果是${solveOne(TreeNode(1))}\n")
+            print("结果是${solveTwo(null)}\n")
         }
 
         /**
@@ -48,6 +49,24 @@ class MinDepth {
                 result++
             }
             return result
+        }
+
+        fun solveTwo(root: TreeNode?): Int {
+            fun minDepth(root: TreeNode?): Int {
+                if (root == null) {
+                    return 0
+                }
+                if (root.left == null && root.right != null) {
+                    return minDepth(root.right) + 1
+                }
+                if (root.left != null && root.right == null) {
+                    return minDepth(root.left)  + 1
+                }
+                var left = minDepth(root.left)
+                var right = minDepth(root.right)
+                return Math.min(left, right) + 1
+            }
+            return minDepth(root)
         }
     }
 }
