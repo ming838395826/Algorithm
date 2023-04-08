@@ -38,7 +38,7 @@ class ConstructMaximumBinaryTree {
             - 空数组，无子节点。
              */
             val root = TreeNode(1)
-            print("结果是${solveOne(root, 23)}\n")
+            print("结果是${solveOne(intArrayOf())}\n")
         }
 
         /**

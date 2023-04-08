@@ -25,7 +25,7 @@ class HasPathSum {
             解释：等于目标和的根节点到叶节点路径如上图所示。
              */
             val root = TreeNode(1)
-            print("结果是${solveOne(root)}\n")
+            print("结果是${solveOne(root,2)}\n")
         }
 
         /**
