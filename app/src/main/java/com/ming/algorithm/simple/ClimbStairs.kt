@@ -25,7 +25,7 @@ class ClimbStairs {
             1. 1 阶 + 1 阶
             2. 2 阶
              */
-            print("结果是${solveOne(5)}\n")
+            print("结果是${solveTwo(2)}\n")
         }
 
         /**
@@ -44,6 +44,27 @@ class ClimbStairs {
             result[2] = 2
             for (index in 3..n) {
                 result[index] = result[index - 1] + result[index - 2]
+            }
+            return result[n]
+        }
+
+        /**
+         * 动态规划之背包问题
+         * 公式： F[n] += F[n-cost[i]]
+         *      可以爬1阶，2阶，到M阶.等价于有 物品重量 1 ，2 ，3 到m
+         *      沾满背包为n的背包问题，因为1阶都可以重复利用，所以为完全背包
+         * 初始化： 0 阶 为 1 种方法
+         * 顺序： 先爬1 再爬2 和先爬1 再爬2 是不一样的，所以为排列。要先遍历背包
+         */
+        fun solveTwo(n: Int): Int {
+            val result = IntArray(n + 1)
+            result[0] = 1 //无需爬动
+            for (j in 1..n) {
+                for (i in 1..2) {
+                    if (i <= j) {
+                        result[j] += result[j - i]
+                    }
+                }
             }
             return result[n]
         }
