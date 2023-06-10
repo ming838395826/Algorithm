@@ -47,5 +47,26 @@ class MaxSubArray {
             }
             return result
         }
+
+        /**
+         * 动态规范
+         * 定义： dp[i] 为以i为结尾 最大的序列长度
+         * 公式： d[i] = Math.max(dp[i-1] + nums[i], num[i])
+         *       如果相加大于 那么取他 如果小于即不取重新计算
+         * 初始化 0 为 nums[0]
+         * 方向： 从前到后地推
+         */
+        fun solveTwo(nums: IntArray): Int {
+            if (nums.isEmpty()) return 0
+            val result = IntArray(nums.size)
+            result[0] = nums[0]
+            var max = nums[0]
+            for (i in 1 until nums.size) {
+                // 如果加完 还小于自身 ，则重新开始计算
+                result[i] = Math.max(result[i - 1] + nums[i], nums[i])
+                max = Math.max(result[i], max)
+            }
+            return max
+        }
     }
 }
