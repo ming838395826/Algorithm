@@ -28,7 +28,7 @@ class SumRange {
             输出：
             [null, 1, -1, -3]
              */
-            print("结果是${solveOne(6)}\n")
+            print("结果是${solveOne(4,6)}\n")
         }
 
         /**
